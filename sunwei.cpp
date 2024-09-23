@@ -5,7 +5,7 @@ using namespace std;
 
 
 int main(){
-  // this is new file
+	// this is a new file 可以覆盖吗
 	printf("sunwei\n");
 	//xb
 	//// da sha bi
