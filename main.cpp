@@ -1,4 +1,4 @@
-#include "../include/Harem.h"
+#include "include/Harem.h"
 #include <cstdio>
 #include <cstring>
 #include <iostream>
