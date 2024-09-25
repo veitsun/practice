@@ -14,7 +14,7 @@
 - 运行代码（编译链接之后）
   - ```make 姓名``` (示例 ： make sunwei)
 
-### 提交代码请提交到远程仓库的main分支(自己```git fetch origin```检查是否有conflicts)，项目管理员会亲自检查一遍，由项目管理员merge到主分支（此项目的主分支不是main）)
+### 提交代码请提交到远程仓库的main分支(自己```git fetch origin```检查是否有conflicts)
 
 ##### git 在push之前如何检查是否有冲突
 
