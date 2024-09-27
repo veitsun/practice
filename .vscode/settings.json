@@ -1,6 +1,8 @@
 {
-    "files.associations": {
-        "cstring": "cpp",
-        "iostream": "cpp"
-    }
+    "files.autoSave": "onFocusChange",
+    "auto-rename-tag.activationOnLanguage": [
+        "*"
+    ],
+    "gitHistory.includeRemoteBranches": true,
+    "clangd.path": "/usr/bin/clangd"
 }
