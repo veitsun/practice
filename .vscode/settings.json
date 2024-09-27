@@ -1,0 +1,8 @@
+{
+    "files.autoSave": "onFocusChange",
+    "auto-rename-tag.activationOnLanguage": [
+        "*"
+    ],
+    "gitHistory.includeRemoteBranches": true,
+    "clangd.path": "/usr/bin/clangd"
+}
