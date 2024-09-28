@@ -1,5 +1,6 @@
 #include "include/Harem.h"
 #include "include/Matrix.h"
+#include "include/juzhen.h"
 #include <cstdio>
 #include <cstring>
 #include <iostream>
@@ -14,9 +15,13 @@ int main() {
   //   cout << "sad girl" << endl;
   // girl->show();
 
-  Matrix *matrix = new Matrix(4);
-  matrix->InitMatrix();
-  matrix->assignMatrix();
-  matrix->show();
-  return 0;
+  // Matrix *matrix = new Matrix(4);
+  // matrix->InitMatrix();
+  // matrix->assignMatrix();
+  // matrix->show();
+  // return 0;
+
+    Juzhen *juzhen =new Juzhen(5);
+    juzhen->Initjuzhen();
+    juzhen->show();
 }
