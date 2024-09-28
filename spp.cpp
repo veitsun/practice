@@ -15,6 +15,7 @@ int main() {
   //   cout << "sad girl" << endl;
   // girl->show();
 
+
   // Matrix *matrix = new Matrix(4);
   // matrix->InitMatrix();
   // matrix->assignMatrix();
@@ -24,4 +25,6 @@ int main() {
     Juzhen *juzhen =new Juzhen(5);
     juzhen->Initjuzhen();
     juzhen->show();
+
+    return 0;
 }
