@@ -1,56 +1,86 @@
 #include "../include/Matrix.h"
 #include <iostream>
+#include <ctime>
+
+using namespace std;
+
+//构造函数
+
+
 
 Matrix::Matrix(int n)
 {
-    this->_n = n;
-}
+    this->m_n = n;
 
-//初始化
-void Matrix::InitMatrix()
-{
-     m_ptr = new int*[_n];
-    for(int i=0;i<_n;i++)
-        m_ptr[i] = new int[_n];
+    //初始化数组，赋值为0
+    this->m_ptr = new int[m_n*m_n];
 
-}
-
-//为矩阵赋值
-void Matrix::assignMatrix()
-{
-    int num;
-    for (int i = 0; i < _n; i++)
+    for (int i = 0; i < n*n; i++)
     {
-        std::cout<<"请在第"<<i<<"列，输入"<< _n <<"个数据"<<std::endl;
-        for(int j = 0; j < _n; j++)
-        {
-            
-            std::cin >> num;
-            m_ptr[j][i] = num;
-        }
+        m_ptr[i] = 0;
     }
     
 }
 
+// 重写构造拷贝构造函数,因为有属性在堆区开辟
+Matrix::Matrix(const Matrix& p)
+{
+    this->m_n = p.m_n;
+    //重新在堆区开辟内存
+    this->m_ptr = new int[p.m_n*p.m_n];
+
+     for(int i=0;i<m_n*m_n;i+=m_n)
+    {
+        for(int j=0;j<m_n;j++)
+        {
+           m_ptr[i+j]= p.m_ptr[i+j];
+        }
+        
+    }
+} 
+
+//初始化矩阵
+void Matrix::InitMatrix()
+{
+    
+
+    srand((unsigned)time(NULL));
+    for(int i=0;i<m_n*m_n;i+=m_n)
+    {
+        for(int j=0;j<m_n;j++)
+        {
+           m_ptr[i+j]= rand()%(10);
+        }
+    }
+    cout<<"初始化矩阵完成"<<endl;
+}
+ 
+
 //显示矩阵
 void Matrix::show()
 {
-    std::cout<<"该矩阵为："<<std::endl;
-    for (int i = 0; i < _n; i++)
+    cout<<"该矩阵为："<<endl;
+     for(int i=0;i<m_n*m_n;i+=m_n)
     {
-        for(int j = 0; j < _n; j++)
+        for(int j=0;j<m_n;j++)
         {
-            
-            std::cout<<m_ptr[i][j]<<" ";
+           cout<<m_ptr[i+j]<<" ";
         }
-        std::cout<<std::endl;    
+        cout<<endl;
     }
+
 }
 
+
+
 //析构函数
-Matrix::~Matrix() {
- for (int i = 0; i < _n; ++i) {
-			delete[] m_ptr[i];
-		}
-		delete[] m_ptr;
+Matrix::~Matrix()
+{
+    if(this->m_ptr != nullptr)
+    {
+        delete m_ptr;
+        m_ptr = nullptr;
+    }
+
 }
+

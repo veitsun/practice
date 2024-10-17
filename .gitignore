@@ -4,3 +4,4 @@ build
 .gitignore
 .clangd
 .clang-tidy
+.cppTest

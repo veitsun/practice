@@ -1,30 +1,21 @@
-#include "include/Harem.h"
-#include "include/Matrix.h"
-#include "include/juzhen.h"
-#include <cstdio>
-#include <cstring>
 #include <iostream>
+#include<cstring>
+#include "../include/Matrix.h"
+
 using namespace std;
 
-int main() {
-  // Harem *girl = new Harem(18, 165, 105);
-  // bool check = girl->check_beauty();
-  // if (check)
-  //   cout << "nice girl" << endl;
-  // else
-  //   cout << "sad girl" << endl;
-  // girl->show();
+int main()
+{   
+  Matrix ma = Matrix(4);
+  ma.InitMatrix();
+  ma.show();
+  
+  Matrix mb =  Matrix(4); 
+  mb.InitMatrix();
+  mb.show();
 
+  Matrix mc = ma.operator*(mb);
+  mc.show();
 
-  // Matrix *matrix = new Matrix(4);
-  // matrix->InitMatrix();
-  // matrix->assignMatrix();
-  // matrix->show();
-  // return 0;
-
-    Juzhen *juzhen =new Juzhen(5);
-    juzhen->Initjuzhen();
-    juzhen->show();
-
-    return 0;
+  return 0;
 }

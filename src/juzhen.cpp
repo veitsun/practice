@@ -19,13 +19,7 @@ void Juzhen::Initjuzhen()
     {
         for(int j=0;j<n;j++)
         {
-           
-           a[i+j]= rand()%(101);
-
-           //产生0~n之间的随机数（包括n和0），
-        // double base=((double)rand())/RAND_MAX;//产生0~1之间的随机实数;
-        // long long res=((double)100*base+0.5);//再把上面的实数扩大n倍并四舍五入
-        // a[i+j] = res;
+           a[i+j]= rand()%(10);
         }
         cout<<endl;
     }
