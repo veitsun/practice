@@ -9,7 +9,9 @@ add_library(SUNWEI SHARED  ${HELLOlib_src})
 
 add_executable(sunwei ../sunwei.cpp)
 add_executable(spp ../spp.cpp)
+add_executable(sunwei2 ../sunwei2.cpp)
 
 
 target_link_libraries(sunwei PRIVATE SUNWEI)
 target_link_libraries(spp PRIVATE SUNWEI)
+target_link_libraries(sunwei2 PRIVATE SUNWEI)
