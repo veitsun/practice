@@ -1,4 +1,5 @@
 # 小菜鸡必读
+![alt text](./image/conflict.png)
 
 ### 如何编译链接整个项目
 
