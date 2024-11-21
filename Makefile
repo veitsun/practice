@@ -45,5 +45,7 @@ sunwei2:
 	@./build/src/sunwei2
 spp:
 	@./build/src/spp
+spp1:
+	@./build/src/spp1
 
 .PHONY: all config build clean rebuild

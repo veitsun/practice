@@ -3,55 +3,108 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-#include <ctime>
+#include <random>
 #include <iostream>
 #include <pthread.h>
+#include <ctime>
 #include <unistd.h>
 
 using namespace std;
+int n,k,len;
 
-void *print_a(void *a) { // 线程a
-  for (int i = 0; i < 10; i++) {
-    sleep(1);
-    std::cout << "aa" << std::endl;
-  }
-  return NULL;
+// 生成[a,b]之间的整数
+int myRandom(int x, int y)
+{
+    return x + (rand() % (y - x + 1));
 }
 
-void *print_b(void *b) { // 线程b
-  for (int i = 0; i < 20; i++) {
-    sleep(1);
-    std::cout << "bbb" << std::endl;
-  }
-  return NULL;
+void mySwap(int &a,int &b)
+{
+  int temp = a;
+  a = b;
+  b = temp;
 }
 
-int main() {
-  pthread_t t0;
-  pthread_t t1;
+int randomPartition(int *a,int p,int r)
+{
+  int temp = myRandom(p,r);
+  mySwap(a[p],a[temp]);
+  
+  int x = a[p], i = p, j = r+1 ;
+  while (true)
+  {
+    while (a[++i] < x && i < r) ;  //找到比a[p]大的数
 
-  // 创建线程a
-  if (pthread_create(&t0, NULL, print_a, NULL) == -1) {
-    std::cout << "创建线程t0失败" << std::endl;
-    exit(0);
+    while (a[--j] > x ) ;  //找到比a[p]小的数
+    
+    if(i>=j) break;
+    mySwap(a[i],a[j]);    
   }
+    a[p] = a[j];
+    a[j] = x;
 
-  // 创建线程b
-  if (pthread_create(&t1, NULL, print_b, NULL) == -1) {
-    std::cout << "创建线程b失败" << std::endl;
-    exit(1);
-  }
+  return j ;
 
-  // 等待线程结束
-  void *result;
-  if (pthread_join(t0, &result) == -1) {
-    std::cout << "回收t0线程失败" << std::endl;
-    exit(1);
-  }
-  if (pthread_join(t1, &result) == -1) {
-    std::cout << "回收t1线程失败" << std::endl;
-    exit(1);
-  }
+}
+
+//递归函数
+int randomSelect(int *a,int p,int r,int k)
+{
+
+  if(p == r)    
+    return a[p]; //递归出口
+  
+  //随机选取一个数，把数组划分成大于和小于该数的两部分,并返回该数的下标
+  int i = randomPartition(a,p,r); 
+
+  // 求小于该数的一部分数组长度
+   len = i - p + 1;
+
+  // 该长度大于K,说明在前一部分的数组内
+  if(len >= k)                            // 0  1  2  3  4  5  6  7
+    randomSelect(a,p,i,k);                // 23 45 12 18 35 67 13 77
+  else
+    randomSelect(a, i+1 , r , k-len);
+  
+}
+
+
+int main()
+{
+  
+    //输入数组长度n
+    cout<<"输入数组的长度： "<<endl;
+    cin>>n;
+   
+    int *a = new int[n];
+    for (int i = 0; i < n; ++i)
+    {
+        cin>>a[i];
+    }
+
+    //输入第k小
+    cout<<"输入K"<<endl;
+    cin>>k;
+
+
+  // for (int i = 0; i < n; i++)
+  // {
+  //   cout<<a[i]<<" ";
+  // }
+
+  //使用线性随机算法查找第K小的值
+  int result =randomSelect(a, 0, n-1, k);
+
+  // for (int i = 0; i < n; i++)
+  // {
+  //   cout<<a[i]<<" ";
+  // }
+
+  cout<<endl;
+  cout<<"第"<<k<<"个数为："<<result<<endl;
 
   return 0;
 }
+
+
+
