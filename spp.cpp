@@ -126,9 +126,9 @@ int main()
 {
     
     
-    // const std::string & filename = "text.txt";
+    const std::string & filename = "text.txt";
 
-    // CacheFile file(filename,20);
+    CacheFile file(filename,20);
 
     
     // if(file.openFileForRead())
@@ -141,15 +141,16 @@ int main()
     //     size_t num1 = file.read(&des[10],10);
     //     size_t num2 = file.read(&des[20],15);
     
+
     //     cout<<des<<endl;
     // }
        
   
     // if (file.openFileForWrite())
     // {
-    //     char *data = "1234567890";
+    //     const char* data = "1234567890";
     
-    //     char *data1 = "zhuijiadeshuju";
+    //     const char* data1 = "zhuijiadeshuju";
         
     //     size_t num = file.write(data,10); //先读10字节存起来
 
@@ -162,14 +163,14 @@ int main()
 
     // }
     
-    // if (file.openFileForRead())
-    // {
-    //     char data[100];
-    //     std::streampos new_pos =  file.lseek(10,std::ios_base::beg);
-    //     file.read(&data[0],10);
-    //     cout<<"new_pos: " <<new_pos<<endl;
-    //     cout<<data<<endl;
-    // }
+    if (file.openFileForRead())
+    {
+        char data[100];
+        std::streampos new_pos =  file.lseek(10,std::ios_base::beg);
+        file.read(&data[0],10);
+        cout<<"new_pos: " <<new_pos<<endl;
+        cout<<data<<endl;
+    }
     
 
     

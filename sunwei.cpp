@@ -62,9 +62,9 @@ int randomSelect(int *a,int p,int r,int k)
 
   // 该长度大于K,说明在前一部分的数组内
   if(len >= k)                            // 0  1  2  3  4  5  6  7
-    randomSelect(a,p,i,k);                // 23 45 12 18 35 67 13 77
+    return randomSelect(a,p,i,k);                // 23 45 12 18 35 67 13 77
   else
-    randomSelect(a, i+1 , r , k-len);
+    return randomSelect(a, i+1 , r , k-len);
   
 }
 

@@ -47,7 +47,7 @@ size_t CacheFile::read(char *destination, size_t size) {
 }
 
 // write操作
-size_t CacheFile::write(char *data, size_t numbytes) {
+size_t CacheFile::write(const char *data, size_t numbytes) {
   size_t totalWrite = 0;
 
   while (totalWrite < numbytes) {
@@ -94,7 +94,7 @@ std::streampos CacheFile::lseek(std::streampos offset,
   if (whence == std::ios_base::cur) {
     currentPos = inputfile.tellg(); // 获取当前读指针位置
 
-    if (currentPos = -1) {
+    if (currentPos == -1) {
       return -1;
     }
   }

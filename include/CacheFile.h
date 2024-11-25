@@ -19,7 +19,10 @@ using namespace std;
 class CacheFile {
 public:
   CacheFile(const std::string &file, size_t buffersize)
-      : fileName(file), bufferSize(buffersize), buffer_Position(0) {
+  {
+    fileName = file;
+    bufferSize = buffersize;
+    buffer_Position = 0;
     buffer.resize(buffersize);
   }
 
@@ -36,7 +39,7 @@ public:
   // 从而提高整体写入效率。因为磁盘写入操作本身相对耗时，批量写入能够更充分利用磁盘写入的带宽等资源
   // 只有在特定时候（如手动保存、定时自动保存等情况）才将缓存数据写入磁盘
   // write操作
-  size_t write(char *data, size_t numbytes);
+  size_t write(const char *data, size_t numbytes);
 
   // lseek操作 offset:偏移量 whence:什么方式进行偏移
   std::streampos lseek(std::streampos offset, std::ios_base::seekdir whence);
