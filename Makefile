@@ -41,8 +41,7 @@ play: config build
 
 sunwei:
 	@./build/src/sunwei
-sunwei2:
-	@./build/src/sunwei2
+
 spp:
 	@./build/src/spp
 spp1:

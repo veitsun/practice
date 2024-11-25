@@ -124,9 +124,11 @@ using namespace std;
 
 int main()
 {
-    const std::string & filename = "text.txt";
+    
+    
+    // const std::string & filename = "text.txt";
 
-    CacheFile file(filename,20);
+    // CacheFile file(filename,20);
 
     
     // if(file.openFileForRead())
