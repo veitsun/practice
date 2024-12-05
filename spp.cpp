@@ -22,7 +22,8 @@
 //     {
 //         for (int i = 0; i < numthread; i++)
 //         {
-//             threads.emplace_back([this]{  //threads 是一个容器，emplace_back 就地创造一个thread变量
+//             threads.emplace_back([this]{  //threads 是一个容器，emplace_back
+//             就地创造一个thread变量
 //                 while (true)   //线程一直执行
 //                 {
 //                     std::unique_lock<std::mutex> lock(mtx);
@@ -40,10 +41,10 @@
 //                     lock.unlock();
 //                     task();
 //                 }
-                
+
 //             });
 //         }
-        
+
 //     }
 
 //     ~ThreadPoll()
@@ -56,10 +57,9 @@
 
 //         for (auto& a :threads)
 //         {
-        
+
 //                 a.join();  //等待线程运行完结束，否则会有错误
 
-            
 //         }
 
 //     }
@@ -99,81 +99,70 @@
 
 //     // for (int i = 0; i < 10; i++)
 //     // {
-        
+
 //     // }
 
 //     int a[2]={1,2};
 //     myswap(&a[1],&a[0]);
 
 //     cout<< a[0]<<endl;
-    
+
 //      cout<< a[1]<<endl;
 //     return 0;
 // }
 
-#include<iostream>
-#include<cstdio>
-#include "include/CacheFile.h"
+#include "CacheFile.h"
 #include <cstdio>
 #include <cstdlib>
-#include <string.h>
+#include <iostream>
 
 using namespace std;
 
 //   测试带有缓存的文件类
 
-int main()
-{
-    
-    
-    const std::string & filename = "text.txt";
+int main() {
 
-    CacheFile file(filename,20);
+  const std::string &filename = "text.txt";
 
-    
-    // if(file.openFileForRead())
-    // {
-    //      cout<<"打开文件成功"<<endl;
-    //     // 每次缓存读取bufferSize大小的数据，每次读写时不需要每次都访问磁盘
-    //     // 只需要在buffer中获取，
-    //     char des[100];
-    //     size_t num = file.read(&des[0],10);
-    //     size_t num1 = file.read(&des[10],10);
-    //     size_t num2 = file.read(&des[20],15);
-    
+  CacheFile file(filename, 20);
 
-    //     cout<<des<<endl;
-    // }
-       
-  
-    // if (file.openFileForWrite())
-    // {
-    //     const char* data = "1234567890";
-    
-    //     const char* data1 = "zhuijiadeshuju";
-        
-    //     size_t num = file.write(data,10); //先读10字节存起来
+  // if(file.openFileForRead())
+  // {
+  //      cout<<"打开文件成功"<<endl;
+  //     // 每次缓存读取bufferSize大小的数据，每次读写时不需要每次都访问磁盘
+  //     // 只需要在buffer中获取，
+  //     char des[100];
+  //     size_t num = file.read(&des[0],10);
+  //     size_t num1 = file.read(&des[10],10);
+  //     size_t num2 = file.read(&des[20],15);
 
-    //      size_t num1 = file.write(data1,14); //追加14字节
+  //     cout<<des<<endl;
+  // }
 
-    //     file.flushBuffer(); //最后刷新缓存内的数据
+  // if (file.openFileForWrite())
+  // {
+  //     const char* data = "1234567890";
 
-    //     cout<< "num: "<<num <<endl;
-    //     cout<< "num1: "<<num1 <<endl;
+  //     const char* data1 = "zhuijiadeshuju";
 
-    // }
-    
-    if (file.openFileForRead())
-    {
-        char data[100];
-        std::streampos new_pos =  file.lseek(10,std::ios_base::beg);
-        file.read(&data[0],10);
-        cout<<"new_pos: " <<new_pos<<endl;
-        cout<<data<<endl;
-    }
-    
+  //     size_t num = file.write(data,10); //先读10字节存起来
 
-    
-    
-    return 0;
+  //      size_t num1 = file.write(data1,14); //追加14字节
+
+  //     file.flushBuffer(); //最后刷新缓存内的数据
+
+  //     cout<< "num: "<<num <<endl;
+  //     cout<< "num1: "<<num1 <<endl;
+
+  // }
+
+  if (file.openFileForRead()) {
+    char data[100];
+    std::streampos new_pos = file.lseek(10, std::ios_base::beg);
+    file.read(&data[0], 10);
+    cout << "new_pos: " << new_pos << endl;
+    cout << data << endl;
+  }
+
+  return 0;
 }

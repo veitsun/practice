@@ -3,7 +3,6 @@
 #include <cstdio>
 #include <fstream>
 #include <iostream>
-#include <random>
 #include <vector>
 
 using namespace std;
@@ -18,8 +17,7 @@ using namespace std;
 // 调用该类的读操作接口时，该类能根据策略缓存读出的数据
 class CacheFile {
 public:
-  CacheFile(const std::string &file, size_t buffersize)
-  {
+  CacheFile(const std::string &file, size_t buffersize) {
     fileName = file;
     bufferSize = buffersize;
     buffer_Position = 0;
